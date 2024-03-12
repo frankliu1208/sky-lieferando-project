@@ -1,11 +1,11 @@
 package com.sky.constant;
 
 /**
- * 信息提示常量类
+ * 信息提示常量类,  these informations will send to the frontend
  */
 public class MessageConstant {
 
-    public static final String PASSWORD_ERROR = "密码错误";
+    public static final String PASSWORD_ERROR = "Password is wrong";
     public static final String ACCOUNT_NOT_FOUND = "账号不存在";
     public static final String ACCOUNT_LOCKED = "账号被锁定";
     public static final String UNKNOWN_ERROR = "未知错误";

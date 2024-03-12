@@ -57,7 +57,7 @@ public class EmployeeController {
                 .name(employee.getName())
                 .token(token)
                 .build();
-
+        //  the data from backend is encapsulated into Result class
         return Result.success(employeeLoginVO);
     }
 
