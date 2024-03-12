@@ -34,7 +34,7 @@ public class EmployeeController {
     /**
      * 登录
      *
-     * @param employeeLoginDTO
+     * @param employeeLoginDTO,  data transferred from the frontend
      * @return
      */
     @PostMapping("/login")
