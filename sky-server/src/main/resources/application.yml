@@ -34,6 +34,6 @@ sky:
     # 设置jwt签名加密时使用的秘钥
     admin-secret-key: itcast
     # valid time of jwt token, when doing interface test, we need the jwt token
-    admin-ttl: 7200000
+    admin-ttl: 17200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token

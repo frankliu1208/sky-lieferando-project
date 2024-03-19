@@ -41,9 +41,7 @@ public class EmployeeController {
     @ApiOperation("employee log-in")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("employee log in：{}", employeeLoginDTO);
-
         Employee employee = employeeService.login(employeeLoginDTO);
-
         //登录成功后，生成jwt令牌
         Map<String, Object> claims = new HashMap<>();
         claims.put(JwtClaimsConstant.EMP_ID, employee.getId());
@@ -96,6 +94,21 @@ public class EmployeeController {
     public Result startOrStop(@PathVariable Integer status, Long id) {
         log.info("user account: {}, {}", status, id);
         employeeService.startOrStop(status, id);
+        return Result.success();
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation("search for employee info according to id")
+    public Result<Employee> getById(@PathVariable Long id) {
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    @PutMapping
+    @ApiOperation("edit employee information")
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("edit employee info: {}", employeeDTO);
+        employeeService.update(employeeDTO);
         return Result.success();
     }
 

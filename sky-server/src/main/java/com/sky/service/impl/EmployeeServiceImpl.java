@@ -115,4 +115,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.update(employee);
     }
 
+    @Override
+    public Employee getById(Long id) {
+        Employee employee = employeeMapper.getById(id);  // psd will also send to frontend, therefore need to handle it first
+        employee.setPassword("****");
+        return employee;
+    }
+
+    // edit employee info
+    @Override
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO, employee); // 对象的属性拷贝，将employeeDTO中的属性拷贝到employee对象中
+
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
+        employeeMapper.update(employee);
+    }
+
 }

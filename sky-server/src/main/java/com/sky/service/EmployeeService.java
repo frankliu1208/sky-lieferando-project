@@ -25,4 +25,10 @@ public interface EmployeeService {
 
     // enable/disable user account
     void startOrStop(Integer status, Long id);
+
+    // search for employee info according to id
+    Employee getById(Long id);
+
+    // edit employee message
+    void update(EmployeeDTO employeeDTO);
 }
