@@ -90,6 +90,14 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
+    // non-search operation,  we dont need the generic because backend dont need to return detailed data to frontend
+    @PostMapping("/status/{status}")
+    @ApiOperation("enable/disable user account")
+    public Result startOrStop(@PathVariable Integer status, Long id) {
+        log.info("user account: {}, {}", status, id);
+        employeeService.startOrStop(status, id);
+        return Result.success();
+    }
 
 
 }

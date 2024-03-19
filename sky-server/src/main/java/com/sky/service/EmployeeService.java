@@ -9,7 +9,7 @@ import com.sky.result.PageResult;
 public interface EmployeeService {
 
     /**
-     * 员工登录
+     * user log-in
      * @param employeeLoginDTO
      * @return
      */
@@ -22,4 +22,7 @@ public interface EmployeeService {
     void save(EmployeeDTO employeeDTO);
 
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    // enable/disable user account
+    void startOrStop(Integer status, Long id);
 }

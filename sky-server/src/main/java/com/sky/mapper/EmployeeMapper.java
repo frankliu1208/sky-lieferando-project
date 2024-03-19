@@ -29,4 +29,7 @@ public interface EmployeeMapper {
 
     // pagination search,  SQL is written in the mapping file:  EmployeeMapper.xml
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+
+    void update(Employee employee);
 }
