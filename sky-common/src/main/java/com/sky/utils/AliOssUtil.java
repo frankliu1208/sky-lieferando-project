@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import java.io.ByteArrayInputStream;
 
+// 工具类， 当进行文件上传时，调用该类中的方法，将data上传至aliyun数据库
 @Data
 @AllArgsConstructor
 @Slf4j
@@ -52,7 +53,7 @@ public class AliOssUtil {
             }
         }
 
-        //文件访问路径规则 https://BucketName.Endpoint/ObjectName
+        //文件访问路径规则 https://BucketName.Endpoint/ObjectName   图片上传到aliyun后的访问网址
         StringBuilder stringBuilder = new StringBuilder("https://");
         stringBuilder
                 .append(bucketName)
