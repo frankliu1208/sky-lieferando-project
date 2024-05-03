@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// vo will send to frontend,
 @Data
 @Builder
 @NoArgsConstructor

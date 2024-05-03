@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+// the property of this dto is aligned with request param from frontend
 @Data
 public class DishPageQueryDTO implements Serializable {
 
