@@ -11,3 +11,8 @@ sky:
     access-key-id: aaa
     access-key-secret: aaa
     bucket-name: aaa
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 10
