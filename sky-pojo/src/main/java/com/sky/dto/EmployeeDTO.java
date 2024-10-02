@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+//  same with the json body in add employee interface at the frontend
 @Data
 public class EmployeeDTO implements Serializable {
 

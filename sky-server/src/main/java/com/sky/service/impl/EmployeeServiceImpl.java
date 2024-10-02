@@ -45,7 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //2、处理各种异常情况（用户名不存在、密码不对、账号被锁定）
         if (employee == null) {
-            //账号不存在
+            //账号不存在,  self-defined exception class.  definition of this exception class is in sky-common.
+            // the catch is in handler folder under sky-server
             throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
         }
 
@@ -70,19 +71,22 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void save(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
 
-        BeanUtils.copyProperties(employeeDTO, employee);
+        // BeanUtils comes from Spring framework,  copy the properties from dto to entity
+        // the property name shall be exactly the same btw dto and entitiy class
+        BeanUtils.copyProperties(employeeDTO, employee);  // front:  source,  latter: destination
+        // additional properties in entity class have to be manually set, cannot be copied
 
+        // define constant class
         employee.setStatus(StatusConstant.ENABLE);
-
+        // encode password through md5
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
 
 //        employee.setCreateTime(LocalDateTime.now());
-//
 //        employee.setUpdateTime(LocalDateTime.now());
-//
 //        employee.setCreateUser(BaseContext.getCurrentId());
 //        employee.setUpdateUser(BaseContext.getCurrentId());
 
+        // call the DAO layer
         employeeMapper.insert(employee);
     }
 

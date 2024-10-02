@@ -27,15 +27,17 @@ public class GlobalExceptionHandler {
         return Result.error(ex.getMessage());
     }
 
-    // catch the exceptions coming from the database
+
+    // catch the exceptions coming from the database,  video P19
     @ExceptionHandler
     public Result exceptionHandler(SQLIntegrityConstraintViolationException ex) {
+        // exception message:   Duplicate entry 'zhangsan' for key 'employee.idx_username'
         String message = ex.getMessage();
         if (message.contains("Duplicate entry")) {
             String[] split = message.split(" ");
             String username = split[2];
-            String msg = username + MessageConstant.ALREADY_EXISTS;
-            return Result.error(msg);
+            String msg = username + MessageConstant.ALREADY_EXISTS;  // create a reminding message:  ... already exists
+            return Result.error(msg); // the message will be sent back to frontend
         } else {
             return Result.error(MessageConstant.UNKNOWN_ERROR);
         }

@@ -38,7 +38,7 @@ public class EmployeeController {
      * @param employeeLoginDTO,  data transferred from the frontend
      */
     @PostMapping("/login")
-    @ApiOperation("employee log-in")
+    @ApiOperation("employee log-in")  // 让接口文档有更好的可读性
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("employee log in：{}", employeeLoginDTO);
         Employee employee = employeeService.login(employeeLoginDTO);
@@ -70,7 +70,9 @@ public class EmployeeController {
         return Result.success();
     }
 
-
+    // use employeeDTO to get the data from frontend
+    // post style request
+    // @requestbody:  indicate that the data of an incoming HTTP request body should be mapped to a Java object
     @PostMapping
     @ApiOperation("add new employee")
     public Result save(@RequestBody  EmployeeDTO employeeDTO) {

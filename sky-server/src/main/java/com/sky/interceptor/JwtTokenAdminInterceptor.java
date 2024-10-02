@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class JwtTokenAdminInterceptor implements HandlerInterceptor {
 
+    // 注入配置属性类，该类中封装了apllication.yml中的属性
     @Autowired
     private JwtProperties jwtProperties;
 
@@ -34,6 +35,7 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        // test current thread id  purpose of the test:  every request from frontend will form one thread
         System.out.println("the id of current thread:" + Thread.currentThread().getId());
 
         //判断当前拦截到的是Controller的方法还是其他资源
@@ -48,12 +50,14 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
         //2、校验令牌
         try {
             log.info("jwt校验:{}", token);
+            // the name of the token is configured in application.yml
             Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
 
             // get current user-id
             Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
             log.info("当前员工id：", empId);
 
+            // set the user id into the ThreadLocal,  then in service, dao layer, get the user id.  BaseContext is a common tool
             BaseContext.setCurrentId(empId);
 
             //3、通过，放行

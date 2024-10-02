@@ -63,7 +63,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     }
 
     /**
-     * 设置静态资源映射
+     * 设置静态资源映射,  overwrite the methods in the father class:  WebMvcConfigurationSupport
      * @param registry
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
