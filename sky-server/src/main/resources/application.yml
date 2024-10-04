@@ -22,7 +22,7 @@ spring:
 
 
 mybatis:
-  #mapper配置文件,  scan .xml mapping file
+  #mapper配置文件,  scan .xml mapping file, scan .xml mapping file,  used by mybatis
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.sky.entity
   configuration:

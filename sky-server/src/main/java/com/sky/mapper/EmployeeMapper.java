@@ -30,7 +30,8 @@ public interface EmployeeMapper {
     void insert(Employee employee);
 
 
-    // pagination search,  SQL is written in the mapping file:  EmployeeMapper.xml
+    // pagination search,  SQL is written in the mapping file:  EmployeeMapper.xml 这里要写动态SQL,通过注解的方式不方便
+    //  sql is written into mapping file in reources/mapper folder
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
 

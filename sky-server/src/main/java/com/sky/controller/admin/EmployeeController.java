@@ -82,13 +82,16 @@ public class EmployeeController {
     }
 
 
+    // EmployeePageQueryDTO 是对前端发给后端的数据的封装
     @GetMapping("/page")
     @ApiOperation("pagination search")
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
         log.info("this is pagination search, data from frontend: {}", employeePageQueryDTO);
-        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
-        return Result.success(pageResult);
+        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO); //
+        return Result.success(pageResult); // 进一步封装到Result中，  pageResult对象会赋值给Result类中的data属性
     }
+
+
 
     // non-search operation,  we dont need the generic because backend dont need to return detailed data to frontend
     @PostMapping("/status/{status}")

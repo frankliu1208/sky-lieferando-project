@@ -72,12 +72,13 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    // extend msg converter from Spring MVC ,  for the data from backend,  here we can do unified handling
+    // extend msg converter from Spring MVC ,  for the data from backend,  here we can handle the data type
+    // below method will be called when the application starts
     @Override
     protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         log.info("extend msg converter...");
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setObjectMapper(new JacksonObjectMapper());
-        converters.add(0,  converter);
+        converter.setObjectMapper(new JacksonObjectMapper());  // set an object converter for the msg converter
+        converters.add(0,  converter); // converters is a container, keeping all msg converters
     }
 }
